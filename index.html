@@ -5,40 +5,62 @@
     <title>Hall of Claims</title>
     <meta name="description" content="Hall of Claims">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>    
+    <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+ 
   </head>
 
   <body>
-    <a-scene>
+
+    <a-scene id="the_scene">
       <a-assets>
         <img id="hall" src="hall.png">
         <img id="farmers_logo_white" src="farmers_logo_white.png">
         <img id="deer_0" src="large-0.png">
-        <video id="river-dance" autoplay loop="false" src="river-dance.mp4">
+        <video id="river-dance" autoplay loop="true" src="river-dance.mp4">
         <audio id="bgMusic" src="we_are_farmers.mp3"></audio>
       </a-assets>
 
       <!-- Camera -->
-      <a-entity position="0 0 0" rotation="0 57 0">
+      <a-entity position="0 0 0" rotation="0 0 0">
         <a-camera id="camera">
           <a-cursor color="#4CC3D9"></a-cursor>
         </a-camera>
       </a-entity>
 
       <!-- Planes -->
-      <!--a-plane src="#deer_0" height="50" width="50" position="0 0 -10" scale="0.3 0.3 0.3"></a-plane -->
+      <!--a-plane id="deer0" src="#deer_0" height="50" width="50" position="0 0 -10" scale="0.3 0.3 0.3">
+      </a-plane -->
 
-      <a-video src="#river-dance" controls webkit-playsinline ad-outlet="video" width="50" height="50" position="-23 -2 -15" scale="0.5 0.5 0.5" rotation="0 57 0"></a-video>
+      <a-video src="#river-dance" controls webkit-playsinline ad-outlet="video" width="50" height="50" position="-23 -2 -15" scale="0.5 0.5 0.5" rotation="0 57 0" loop="false"></a-video>
+
+      <a-entity id="mario">
+        <a-image id="logo" src="#farmers_logo_white" width="10" height="5" position="2 -2 -8" scale="0.2 0.2 0.2" rotation="0 30 0"></a-image>
+      </a-entity>
 
 
-      <a-image src="#farmers_logo_white" width="10" height="5" position="-2 -2 -8" scale="0.2 0.2 0.2" rotation="0 30 0"></a-image>
-      
+
       <!-- Sky -->
       <a-sky src="#hall" radius="50"></a-sky>
 
       <!-- Sounds -->
-      <a-entity sound="autoplay: false; loop: true; src: we_are_farmers.mp3;"></a-entity>
+      <a-entity sound="autoplay: false; loop: true; src: we_are_farmers.mp3; volume: 0.5"></a-entity>
 
     </a-scene>
+
+    <!--script type="text/javascript">
+      var el = document.querySelector('#mario')
+      console.log(el);
+
+      var lo = document.querySelector('#logo')
+      console.log(lo);
+
+      var sceneEl = document.querySelector('a-scene');
+      console.log(sceneEl);
+      
+      var entity = sceneEl.querySelector('a-entity');
+      console.log(entity.sceneEl === sceneEl);
+    </script-->
+
   </body>
 </html>
+
