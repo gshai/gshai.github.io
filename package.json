@@ -9,6 +9,7 @@
     "ghpages": "ghpages"
   },
   "devDependencies": {
+    "aframe-mouse-cursor-component": "^0.2.0",
     "budo": "^7.0.0",
     "ghpages": "0.0.3"
   },
