@@ -24,32 +24,32 @@
 
       <!-- Camera -->
       <a-entity position="0 0 0" rotation="0 0 0">
-        <a-camera id="camera" look-controls wasd-controls>
-          <a-cursor color="#4CC3D9">
-            <a-animation begin="cursor-click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="3 3 3"></a-animation>
-            <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" fill="forwards" from="3 3 3" to="0.1 0.1 0.1"></a-animation>
+        <a-camera id="camera" look-controls >
+          <a-cursor fuse="true" color="#4CC3D9" timeout="1500">
+            <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="1 1 0" to="3 3 3" dur="300"></a-animation>
+            <a-animation begin="click" easing="ease-in" attribute="scale" fill="forwards" from="3 3 3" to="1 1 1" dur="300"></a-animation>
           </a-cursor>          
         </a-camera>
       </a-entity>
 
       <!-- Box -->
-      <a-box color="tomato" depth="1" height="1" width="1" position="2 0 -3">
-        <a-animation begin="click" fill="forwards" repeat="1"
-                       direction="alternate" attribute="position" from="2 0 -3"
-                       to="15 0 0" dur="2000">
-        </a-animation>
-      </a-box>
+      <a-box cursor-listener id="mybox" color="tomato" depth="1" height="1" width="1" position="2 0 -3"></a-box>
 
 
       <!-- Planes -->
-      <!--a-plane id="deer0" src="#deer_0" height="50" width="50" position="0 0 -10" scale="0.3 0.3 0.3">
-      </a-plane -->
+      <a-image cursor-listener id="deer" src="#deer_0" width="10" height="10" position="1 0 3" scale="0.2 0.2 0.2" rotation="0 10 0"></a-image>
 
+      <!-- Video -->
       <a-video id='video_0' src="#river-dance" controls webkit-playsinline ad-outlet="video" width="50" height="50" position="-23 -2 -15" scale="0.5 0.5 0.5" rotation="0 57 0" loop="false"></a-video>
 
-      <a-entity id="mario">
-        <a-image id="logo" src="#farmers_logo_white" width="10" height="5" position="2 -2 -8" scale="0.2 0.2 0.2" rotation="0 30 0"></a-image>
-      </a-entity>
+
+      <!-- Light -->
+      <a-light type="spot" color="#333" position="-20 0 0" look-at="a-image"></a-light>
+
+
+      <!-- Logo -->      
+      <a-image cursor-listener id="logo" src="#farmers_logo_white" width="10" height="5" position="2 -2 -8" scale="0.2 0.2 0.2" rotation="0 30 0">          
+      </a-image>      
 
       <!-- Sky -->
       <a-sky src="#hall" radius="50"></a-sky>
@@ -57,11 +57,41 @@
       <!-- Sounds -->
       <a-entity sound="autoplay: false; loop: true; src: we_are_farmers.mp3; volume: 0.2"></a-entity>
 
-      
 
     </a-scene>
 
 
   </body>
+
+  <script type="text/javascript">
+    var box = document.querySelector('#mybox');
+    var logo = document.querySelector('#logo');
+    var vid = document.querySelector('#video_0');
+
+
+    box.addEventListener('mouseenter', function () {
+      console.log("mouse enter on Box");
+      box.setAttribute('position', { x: 2, y: 1, z: -3 });
+    });
+
+    box.addEventListener('mouseleave', function () {
+      console.log("mouse exit the Box");
+      box.setAttribute('position', { x: 2, y: 0, z: -3 });
+    });
+
+    logo.addEventListener('mouseenter', function() {
+      console.log("click on logo");
+      this.setAttribute('rotation', { x: 4, y: 0, z: -10 });
+    });
+
+    logo.addEventListener('mouseleave', function() {
+      this.setAttribute('rotation', { x: 0, y: 30, z: 0 });
+    });
+
+    vid.addEventListener('click', function() {
+      console.log("click on video");      
+    });
+
+  </script>
 </html>
 
