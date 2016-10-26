@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "aframe-mouse-cursor-component": "^0.2.0",
+    "aframe-video-shader": "^0.1.8",
     "budo": "^7.0.0",
     "ghpages": "0.0.3"
   },
