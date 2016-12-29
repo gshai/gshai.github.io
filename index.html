@@ -6,9 +6,7 @@
     <meta name="description" content="Hall of Claims">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
-    <!-- <script src="https://rawgit.com/mayognaise/aframe-video-shader/master/dist/aframe-vid-shader.min.js"></script>
-  -->
-
+    <script src="https://rawgit.com/mayognaise/aframe-video-shader/master/dist/aframe-vid-shader.min.js"></script>
   </head>
 
   <body>
@@ -18,10 +16,8 @@
         <img id="hall" src="hall.png">
         <img id="farmers_logo_white" src="farmers_logo_white.png">
         <img id="deer_0" src="large-0.png">
-        <video id="river-dance" autoplay loop="true" src="river-dance.mp4">
-        <video id="cancan-dance" autoplay loop="true" src="http://www.farmers.com/content/dam/hallofclaims/assets/videos/claim-deer-dance-cancan.mp4"></video>
-        <audio id="bgMusic" src="we_are_farmers.mp3"></audio>
-        
+        <video id="river-dance" loop="false" src="river-dance.mp4">
+        <audio id="bgMusic" src="we_are_farmers.mp3"></audio>        
       </a-assets>
 
       <!-- Camera -->
@@ -29,10 +25,10 @@
         <a-camera id="camera" look-controls >
           <a-cursor fuse="true" color="#4CC3D9" timeout="1500">
             <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="1 1 0" to="3 3 3" dur="300"></a-animation>
-            <a-animation begin="click" easing="ease-in" attribute="scale" fill="forwards" from="3 3 3" to="1 1 1" dur="300"></a-animation>
           </a-cursor>          
         </a-camera>
       </a-entity>
+
 
       <!-- Box -->
       <a-box cursor-listener id="mybox" color="tomato" depth="1" height="1" width="1" position="2 0 -3"></a-box>
@@ -41,15 +37,9 @@
       <!-- Planes -->
       <a-image cursor-listener id="deer" src="#deer_0" width="10" height="10" position="1 0 3" scale="0.2 0.2 0.2" rotation="0 10 0"></a-image>
 
+
       <!-- Video -->
-      <a-video id='video_1' src="#cancan-dance" controls webkit-playsinline ad-outlet="video" width="50" height="50" position="40 -10 -10" scale="0.5 0.5 0.5" rotation="0 100 0" loop="false"></a-video>
-
       <a-video id='video_0' src="#river-dance" controls webkit-playsinline ad-outlet="video" width="50" height="50" position="-23 -2 -15" scale="0.5 0.5 0.5" rotation="0 57 0" loop="false"></a-video>
-
-      <!-- 
-      <a-entity geometry="primitive:box;"  depth="1" width="50" height="50" position="0 -5 15" material="shader:video;src:url(river-dance.mp4);"></a-entity>
-      -->
-
 
 
       <!-- Light -->
@@ -57,26 +47,24 @@
 
 
       <!-- Logo -->      
-      <a-image cursor-listener id="logo" src="#farmers_logo_white" width="10" height="5" position="2 -2 -8" scale="0.2 0.2 0.2" rotation="0 30 0">          
-      </a-image>      
+      <a-image cursor-listener id="logo" src="#farmers_logo_white" width="10" height="5" position="2 -2 -8" scale="0.2 0.2 0.2" rotation="0 30 0"></a-image>
+
 
       <!-- Sky -->
       <a-sky src="#hall" radius="50"></a-sky>
 
+
       <!-- Sounds -->
       <a-entity sound="autoplay: true; loop: true; src: we_are_farmers.mp3; volume: 0.4"></a-entity>
 
-
     </a-scene>
-
-
   </body>
+
 
   <script type="text/javascript">
     var box = document.querySelector('#mybox');
     var logo = document.querySelector('#logo');
     var vid = document.querySelector('#video_0');
-
 
     box.addEventListener('mouseenter', function () {
       console.log("mouse enter on Box");
